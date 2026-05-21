@@ -33,7 +33,7 @@ FORCE_CHANNEL_2_ID = int(os.environ.get("FORCE_CHANNEL_2_ID", "-1003630527469"))
 FORCE_CHANNEL_2_LINK = os.environ.get("FORCE_CHANNEL_2_LINK", "https://t.me/mistubots")
 
 # Heroku Webhook
-WEBHOOK_URL = os.environ.get("WEBHOOK_URL", "https://your-app-name.herokuapp.com")
+WEBHOOK_URL = os.environ.get("WEBHOOK_URL", "https://infoss.herokuapp.com")
 PORT = int(os.environ.get("PORT", 8443))
 
 # ============ INITIALIZATION ============
