@@ -29,7 +29,7 @@ from aiogram.webhook.aiohttp_server import (
 
 BOT_TOKEN = os.environ.get(
     "BOT_TOKEN",
-    "YOUR_BOT_TOKEN"
+    "8876043411:AAFsR4AB433hV-FZNhkn05YaDQwPjjcCt_E"
 )
 
 ADMIN_IDS = list(
