@@ -18,20 +18,20 @@ from aiogram.webhook import aiohttp_server
 
 # ============ CONFIGURATION ============
 # Replace these with your actual values OR use Heroku Config Vars
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "YOUR_BOT_TOKEN_HERE")
-ADMIN_IDS = list(map(int, os.environ.get("ADMIN_IDS", "123456789").split(",")))
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "8876043411:AAHB2ghNBF6usbVOk8SZeq4WaRdR2aWJ61o")
+ADMIN_IDS = list(map(int, os.environ.get("ADMIN_IDS", "7113972959").split(",")))
 
 # OSINT API Configuration
 OSINT_API_KEY = os.environ.get("OSINT_API_KEY", "ROLEX")  # Default key from your example
 OSINT_API_URL = os.environ.get("OSINT_API_URL", "https://rootx-osint.in/")
 
 # Channel 1 Configuration
-FORCE_CHANNEL_1_ID = int(os.environ.get("FORCE_CHANNEL_1_ID", "-1001234567890"))
-FORCE_CHANNEL_1_LINK = os.environ.get("FORCE_CHANNEL_1_LINK", "https://t.me/channel1")
+FORCE_CHANNEL_1_ID = int(os.environ.get("FORCE_CHANNEL_1_ID", "-1003920248424"))
+FORCE_CHANNEL_1_LINK = os.environ.get("FORCE_CHANNEL_1_LINK", "https://t.me/hangamaupdate")
 
 # Channel 2 Configuration
-FORCE_CHANNEL_2_ID = int(os.environ.get("FORCE_CHANNEL_2_ID", "-1009876543210"))
-FORCE_CHANNEL_2_LINK = os.environ.get("FORCE_CHANNEL_2_LINK", "https://t.me/channel2")
+FORCE_CHANNEL_2_ID = int(os.environ.get("FORCE_CHANNEL_2_ID", "-1003630527469"))
+FORCE_CHANNEL_2_LINK = os.environ.get("FORCE_CHANNEL_2_LINK", "https://t.me/mistubots")
 
 # Heroku Webhook
 WEBHOOK_URL = os.environ.get("WEBHOOK_URL", "https://your-app-name.herokuapp.com")
@@ -162,7 +162,7 @@ def format_osint_result(data):
         result += f"• Requests Left: {data[2].get('req_left', 'N/A')}\n"
         result += f"• Total Limit: {data[2].get('req_total', 'N/A')}\n"
         result += f"• Expires: {data[2].get('expiry', 'N/A')}\n"
-        result += f"• Developer: @Uffperfect\n"
+        result += f"• Developer: @sexypym\n"
     
     result += "\n⚠️ Use responsibly and legally only."
     return result
@@ -179,7 +179,7 @@ async def cmd_start(message: Message):
         f"/info - About this bot\n"
         f"/help - Show all commands\n\n"
         f"✅ **Example:** `/search 7811017125`\n\n"
-        f"**Developer:** @Uffperfect",
+        f"**Developer:** @sexypym",
         parse_mode="Markdown"
     )
 
@@ -198,7 +198,7 @@ async def cmd_help(message: Message):
         "**Usage Examples:**\n"
         "• `/search 9876543210`\n"
         "• `/search 7811017125`\n\n"
-        "**Developer:** @Uffperfect",
+        "**Developer:** @sexypym",
         parse_mode="Markdown"
     )
 
@@ -224,7 +224,7 @@ async def cmd_info(message: Message):
         "✅ OSINT Mobile Number Lookup\n"
         "✅ User ID Lookup\n"
         "✅ API Integration\n\n"
-        "**Developer:** @Uffperfect\n"
+        "**Developer:** @sexypym\n"
         "**Source:** Custom Development",
         parse_mode="Markdown"
     )
@@ -274,7 +274,7 @@ async def cmd_search(message: Message):
             f"• Invalid number\n"
             f"• API key issue\n"
             f"• No data available\n\n"
-            f"**Developer:** @Uffperfect",
+            f"**Developer:** @sexypym",
             parse_mode="Markdown"
         )
 
@@ -310,7 +310,7 @@ async def admin_panel(message: Message):
     await message.answer(
         "🔐 **Admin Control Panel**\n\n"
         "Select an option below to manage your bot:\n"
-        f"**Developer:** @Uffperfect",
+        f"**Developer:** @sexypym",
         reply_markup=keyboard,
         parse_mode="Markdown"
     )
@@ -331,7 +331,7 @@ async def admin_actions(callback: CallbackQuery, state: FSMContext):
             "• **Force Subscribe:** Active (2 channels)\n"
             "• **OSINT API:** Connected\n"
             "• **Commands:** /search, /id, /info\n\n"
-            "**Developer:** @Uffperfect\n\n"
+            "**Developer:** @sexypym\n\n"
             "💡 **Tip:** Add a database (MongoDB/Supabase) to track users!"
         )
     
@@ -355,7 +355,7 @@ async def admin_actions(callback: CallbackQuery, state: FSMContext):
             "• `/search 7811017125` - Example search\n"
             "• `/search [any_number]` - Your search\n\n"
             "**API Status:** Active\n"
-            "**Developer:** @Uffperfect"
+            "**Developer:** @sexypym"
         )
     
     elif action == "help":
@@ -370,7 +370,7 @@ async def admin_actions(callback: CallbackQuery, state: FSMContext):
             "• Broadcast: Send messages to all users\n"
             "• OSINT API: Mobile number lookup\n"
             "• User Check: Get any user's information\n\n"
-            "**Developer:** @Uffperfect"
+            "**Developer:** @sexypym"
         )
     
     elif action == "check":
@@ -385,7 +385,7 @@ async def admin_actions(callback: CallbackQuery, state: FSMContext):
             "• Full Name\n"
             "• Username\n"
             "• Bot status\n\n"
-            "**Developer:** @Uffperfect"
+            "**Developer:** @sexypym"
         )
     
     elif action == "status":
@@ -400,7 +400,7 @@ async def admin_actions(callback: CallbackQuery, state: FSMContext):
             "**Channels:**\n"
             f"Channel 1 ID: {FORCE_CHANNEL_1_ID}\n"
             f"Channel 2 ID: {FORCE_CHANNEL_2_ID}\n\n"
-            "**Developer:** @Uffperfect"
+            "**Developer:** @sexypym"
         )
     
     await callback.answer()
@@ -443,7 +443,7 @@ async def check_user(message: Message):
         f"👤 **Username:** @{user.username if user.username else 'None'}\n"
         f"🤖 **Is Bot:** {'Yes' if user.is_bot else 'No'}\n"
         f"🔢 **Language:** {user.language_code if user.language_code else 'Unknown'}\n\n"
-        f"**Developer:** @Uffperfect",
+        f"**Developer:** @sexpym",
         parse_mode="Markdown"
     )
 
@@ -456,7 +456,7 @@ async def on_startup():
     print(f"👑 Admins: {ADMIN_IDS}")
     print(f"📢 Force subscribe channels configured")
     print(f"🔍 OSINT API: {OSINT_API_URL}")
-    print(f"👨‍💻 Developer: @Uffperfect")
+    print(f"👨‍💻 Developer: @sexypym")
 
 async def on_shutdown():
     """Cleanup when bot stops"""
