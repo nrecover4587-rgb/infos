@@ -17,7 +17,9 @@ from aiogram.types import (
     Message,
     CallbackQuery
 )
+
 from aiogram.fsm.state import StatesGroup, State
+
 from aiogram.webhook.aiohttp_server import (
     SimpleRequestHandler,
     setup_application
@@ -27,7 +29,7 @@ from aiogram.webhook.aiohttp_server import (
 
 BOT_TOKEN = os.environ.get(
     "BOT_TOKEN",
-    "8876043411:AAHB2ghNBF6usbVOk8SZeq4WaRdR2aWJ61o"
+    "YOUR_BOT_TOKEN"
 )
 
 ADMIN_IDS = list(
@@ -77,7 +79,7 @@ FORCE_CHANNEL_2_LINK = os.environ.get(
     "https://t.me/mistubots"
 )
 
-# WEBHOOK
+# HEROKU WEBHOOK
 WEBHOOK_URL = os.environ.get(
     "WEBHOOK_URL",
     "https://infoss.herokuapp.com"
@@ -94,12 +96,13 @@ PORT = int(
 
 logging.basicConfig(level=logging.INFO)
 
-# ============ BOT ============
+# ============ BOT INIT ============
 
 bot = Bot(token=BOT_TOKEN)
+
 dp = Dispatcher()
 
-# ============ FORCE SUB CHECK ============
+# ============ FORCE SUBSCRIBE CHECK ============
 
 async def check_missing_channels(user_id: int):
 
@@ -135,15 +138,19 @@ async def check_missing_channels(user_id: int):
 
     return missing
 
-# ============ MESSAGE HANDLER ============
+# ============ MAIN MESSAGE HANDLER ============
 
 @dp.message()
 async def force_sub_middleware(message: Message):
+
+    if not message.from_user:
+        return
 
     user_id = message.from_user.id
 
     missing = await check_missing_channels(user_id)
 
+    # FORCE SUBSCRIBE
     if missing:
 
         buttons = []
@@ -247,7 +254,7 @@ async def osint_lookup(mobile_number: str):
 
         return None
 
-# ============ FORMAT RESULT ============
+# ============ RESULT FORMAT ============
 
 def format_osint_result(data):
 
@@ -375,7 +382,7 @@ async def cmd_search(message: Message):
             "❌ Search failed."
         )
 
-# ============ VERIFY ============
+# ============ VERIFY BUTTON ============
 
 @dp.callback_query(F.data == "check_sub")
 async def callback_check(callback: CallbackQuery):
@@ -427,7 +434,7 @@ async def admin_panel(message: Message):
         reply_markup=keyboard
     )
 
-# ============ ADMIN CALLBACK ============
+# ============ ADMIN ACTIONS ============
 
 @dp.callback_query(F.data.startswith("admin_"))
 async def admin_actions(callback: CallbackQuery):
@@ -507,7 +514,7 @@ def main():
 
     app = web.Application()
 
-    # REGISTER WEBHOOK
+    # WEBHOOK HANDLER
     webhook_requests_handler = SimpleRequestHandler(
         dispatcher=dp,
         bot=bot
@@ -518,12 +525,22 @@ def main():
         path="/webhook"
     )
 
+    # STARTUP / SHUTDOWN EVENTS
+    dp.startup.register(on_startup)
+    dp.shutdown.register(on_shutdown)
+
     # SETUP APPLICATION
     setup_application(
         app,
         dp,
         bot=bot
     )
+
+    # ROOT ROUTE
+    async def root(request):
+        return web.Response(text="Bot is running!")
+
+    app.router.add_get("/", root)
 
     # RUN APP
     web.run_app(
