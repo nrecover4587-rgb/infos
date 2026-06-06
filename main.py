@@ -12,8 +12,8 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, Con
 ADMIN_ID = 7113972959
 JSON_FILE = "list_number.json"
 DEFAULT_COUNTRY_CODE = "91"
-BOMBING_DELAY_SECONDS = 0.2
-MAX_BOMBING_PER_USER = 600
+BOMBING_DELAY_SECONDS = 0.1
+MAX_BOMBING_PER_USER = 6
 THREAD_COUNT = 15
 
 bombing_active = {}
