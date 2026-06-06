@@ -1,13 +1,13 @@
 python-telegram-bot==13.15
 urllib3==1.26.18
 setuptools==82.0.1
+requests
 standard-imghdr
-requests==2.32.3
 
-aiohttp==3.10.11
 pyrogram==2.0.106
-tgcrypto
+tgcrypto==1.2.5
 motor==3.6.0
 pymongo==4.9.2
 python-dotenv==1.0.1
-pydantic==1.10.13
+aiohttp==3.10.11
+APScheduler==3.6.3
