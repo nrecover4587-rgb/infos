@@ -9,12 +9,12 @@ import requests
 from telegram import Update, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters, CallbackQueryHandler 
 
-ADMIN_ID = 731935160
+ADMIN_ID = 7113972959
 JSON_FILE = "list_number.json"
 DEFAULT_COUNTRY_CODE = "91"
-BOMBING_DELAY_SECONDS = 1
-MAX_BOMBING_PER_USER = 50
-THREAD_COUNT = 14
+BOMBING_DELAY_SECONDS = 0.2
+MAX_BOMBING_PER_USER = 600
+THREAD_COUNT = 15
 
 bombing_active = {}
 session = requests.Session()
