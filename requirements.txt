@@ -1,3 +1,8 @@
-python-telegram-bot==20.7
-requests==2.32.3
+pyrogram==2.0.106
+tgcrypto
 aiohttp==3.10.11
+pydantic==1.10.13
+motor==3.6.0
+dnspython==2.7.0
+python-dotenv==1.0.1
+requests
