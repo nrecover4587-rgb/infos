@@ -290,7 +290,7 @@ def bombing_worker(user_id, task_id, phone, cc):
         time.sleep(BOMBING_DELAY_SECONDS)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [["🔥 Start Bombing", "🛑 Stop Bombing"], ["➕ Add More to List"]]
+    keyboard = [["🔥 Start Bombing", "🛑 Stop Bombing"], ["➕ Add target number"]]
     await update.message.reply_text("<b>Welcome! Choose an option:</b>", reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True), parse_mode="HTML")
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
