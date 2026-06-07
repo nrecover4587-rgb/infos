@@ -291,12 +291,12 @@ def bombing_worker(user_id, task_id, phone, cc):
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [["🔥 Start Bombing", "🛑 Stop Bombing"], ["➕ Add target number"]]
-    await update.message.reply_text("<b>Welcome! Choose an option:</b>", reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True), parse_mode="HTML")
+    await update.message.reply_text("<b>Welcome! perfect bomber Choose an option:</b>", reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True), parse_mode="HTML")
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     text = update.message.text
-    if text == "➕ Add More to List":
+    if text == "➕ Add target number":
         context.user_data["state"] = "AWAIT_NUM"
         await update.message.reply_text("🎯 <b>Enter the 10-digit target phone number:</b>", parse_mode="HTML")
         return
