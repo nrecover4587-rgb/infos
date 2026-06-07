@@ -328,7 +328,7 @@ async def stop_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.callback_query.answer()
 
 def main():
-    app = ApplicationBuilder().token("8942825096:AAEFgLdIx2U_AfzCmKplMH4rnrFkR3wRC5U").build()
+    app = ApplicationBuilder().token("8942825096:AAF3wBzT0X9qlATOaUlXAA_699q10af7PTQ").build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(stop_callback, pattern="^stop_"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
